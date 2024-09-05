@@ -1,23 +1,33 @@
-import { useState } from 'react';
+import {useState} from 'react';
 
-function UserForm({ onUserAdd }:any) {
+function UserForm({onUserAdd}: any) {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
 
-  const handleSubmit = (event:any) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
-    onUserAdd({ name, email });
+    onUserAdd({name, email});
+    setEmail('');
+    setName('');
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor='name'>Name</label>
-        <input id="name" value={name} onChange={(e) => setName(e.target.value)} />
+        <label htmlFor="name">Name</label>
+        <input
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
       </div>
       <div>
-        <label htmlFor='email'>Email</label>
-        <input id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </div>
       <button>Add User</button>
     </form>
